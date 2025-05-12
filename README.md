@@ -1,1 +1,0 @@
-# ehu_design_patterns
