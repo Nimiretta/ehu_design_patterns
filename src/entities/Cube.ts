@@ -2,14 +2,31 @@
 import type { Point3D } from './Point3D';
 import { InvalidDataException } from '../exceptions/CustomExceptions';
 import { Shape3D } from './Shape3D';
+import { CubeValidator } from '../validators/CubeValidator';
 
 export class Cube extends Shape3D {
   constructor(
     public readonly id: string,
-    public readonly points: [Point3D],
-    public readonly sideLength: number,
+    protected points: [Point3D],
+    protected sideLength: number,
   ) {
     super(id, points);
+  }
+
+  setPoints(points: [Point3D]): void {
+    CubeValidator.validate(points, this.sideLength);
+    this.points = points;
+    this.notify(this);
+  }
+
+  setSideLength(sideLength: number): void {
+    CubeValidator.validate(this.points, sideLength);
+    this.sideLength = sideLength;
+    this.notify(this);
+  }
+
+  getSideLength(): number {
+    return this.sideLength;
   }
 
   getVolume(): number {

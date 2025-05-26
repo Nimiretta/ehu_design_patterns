@@ -1,12 +1,19 @@
+import { QuadrilateralValidator } from '../validators/QuadrilateralValidator';
 import type { Point2D } from './Point2D';
 import { Shape2D } from './Shape2D';
 
 export class Quadrilateral extends Shape2D {
   constructor(
     public readonly id: string,
-    public readonly points: Point2D[],
+    protected points: Point2D[],
   ) {
     super(id, points);
+  }
+
+  setPoints(points: Point2D[]): void {
+    QuadrilateralValidator.validate(points);
+    this.points = points;
+    this.notify(this);
   }
 
   getArea(): number {

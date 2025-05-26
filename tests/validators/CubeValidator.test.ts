@@ -2,7 +2,7 @@ import { CubeValidator } from '../../src/validators/CubeValidator';
 import { Cube } from '../../src/entities/Cube';
 import { InvalidDataException } from '../../src/exceptions/CustomExceptions';
 import type { Point3D } from '../../src/entities/Point3D';
-import type { Shape3D } from '../../src/entities/Shape3D';
+import { Shape3D } from '../../src/entities/Shape3D';
 
 describe('CubeValidator', () => {
   describe('validate', () => {
@@ -48,7 +48,20 @@ describe('CubeValidator', () => {
 
     describe('Negative Cases', () => {
       it('should return false if the shape is not an instance of Cube', () => {
-        const nonCube: Shape3D = { id: 'shape1', points: [], getVolume: () => 0, getSurfaceArea: () => 0 };
+        class DummyShape3D extends Shape3D {
+          constructor() {
+            super('shape1', []);
+          }
+
+          getVolume(): number {
+            return 0;
+          }
+
+          getSurfaceArea(): number {
+            return 0;
+          }
+        }
+        const nonCube: Shape3D = new DummyShape3D();
 
         expect(CubeValidator.isCube(nonCube)).toBe(false);
       });

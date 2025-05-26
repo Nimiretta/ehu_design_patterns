@@ -11,6 +11,8 @@ export class CubeFactory extends ShapeFactory<Point3D, Cube> {
 
   createShape(id: string, points: [Point3D], sideLength: number): Cube {
     CubeValidator.validate(points, sideLength);
-    return new Cube(id, points, sideLength);
+    const cube = new Cube(id, points, sideLength);
+    this.observeAndNotify(cube);
+    return cube;
   }
 }

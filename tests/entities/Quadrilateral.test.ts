@@ -89,4 +89,17 @@ describe('Quadrilateral', () => {
       expect(quad.isTrapezoid()).toBe(false);
     });
   });
+
+  describe('Setters', () => {
+    test('should update points and notify observers', () => {
+      const points1 = [new Point2D(0, 0), new Point2D(1, 0), new Point2D(1, 1), new Point2D(0, 1)];
+      const points2 = [new Point2D(0, 0), new Point2D(2, 0), new Point2D(2, 2), new Point2D(0, 2)];
+      const quad = new Quadrilateral('quad10', points1);
+      const observer = { update: jest.fn() };
+      quad.attach(observer);
+      quad.setPoints(points2);
+      expect(quad.getPoints()).toEqual(points2);
+      expect(observer.update).toHaveBeenCalledWith(quad);
+    });
+  });
 });

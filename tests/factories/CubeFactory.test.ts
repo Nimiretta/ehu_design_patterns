@@ -24,8 +24,8 @@ describe('CubeFactory', () => {
       const cube = factory.createShape('cube1', [point], 3);
       expect(cube).toBeInstanceOf(Cube);
       expect(cube.id).toBe('cube1');
-      expect(cube.points).toEqual([point]);
-      expect(cube.sideLength).toBe(3);
+      expect(cube.getPoints()).toEqual([point]);
+      expect(cube.getSideLength()).toBe(3);
     });
   });
 

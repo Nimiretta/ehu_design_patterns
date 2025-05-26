@@ -75,4 +75,27 @@ describe('Cube', () => {
       expect(cube.getSliceVolumeByPlane('YZ')).toEqual({ part1: 9, part2: 18 });
     });
   });
+
+  describe('Base and Side Setters', () => {
+    test('should update points and notify observers', () => {
+      const point1 = new Point3D(0, 0, 0);
+      const point2 = new Point3D(1, 1, 1);
+      const cube = new Cube('cube12', [point1], 2);
+      const observer = { update: jest.fn() };
+      cube.attach(observer);
+      cube.setPoints([point2]);
+      expect(cube.getPoints()).toEqual([point2]);
+      expect(observer.update).toHaveBeenCalledWith(cube);
+    });
+
+    test('should update side length and notify observers', () => {
+      const point = new Point3D(0, 0, 0);
+      const cube = new Cube('cube13', [point], 2);
+      const observer = { update: jest.fn() };
+      cube.attach(observer);
+      cube.setSideLength(5);
+      expect(cube.getSideLength()).toBe(5);
+      expect(observer.update).toHaveBeenCalledWith(cube);
+    });
+  });
 });

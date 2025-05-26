@@ -23,7 +23,7 @@ describe('QuadrilateralFactory', () => {
       const quad = factory.createShape('quad1', points);
       expect(quad).toBeInstanceOf(Quadrilateral);
       expect(quad.id).toBe('quad1');
-      expect(quad.points).toEqual(points);
+      expect(quad.getPoints()).toEqual(points);
     });
   });
 

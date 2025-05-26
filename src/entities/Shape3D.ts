@@ -4,10 +4,14 @@ import { Shape } from './Shape';
 export abstract class Shape3D extends Shape {
   constructor(
     public readonly id: string,
-    public points: Point3D[],
+    protected points: Point3D[],
   ) {
     super(id);
   }
   abstract getVolume(): number;
   abstract getSurfaceArea(): number;
+
+  getPoints(): Point3D[] {
+    return this.points;
+  }
 }

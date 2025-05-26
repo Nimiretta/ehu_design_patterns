@@ -25,6 +25,11 @@
     "no-plusplus": "off",
     "import/no-cycle": "off",
     "class-methods-use-this": "off",
-    "no-case-declarations": "off"
+    "no-case-declarations": "off",
+    "linebreak-style": "off",
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off"
   }
 }

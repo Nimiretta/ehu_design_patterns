@@ -11,6 +11,8 @@ export class QuadrilateralFactory extends ShapeFactory<Point2D, Quadrilateral> {
 
   createShape(id: string, points: Point2D[]): Quadrilateral {
     QuadrilateralValidator.validate(points);
-    return new Quadrilateral(id, points);
+    const quad = new Quadrilateral(id, points);
+    this.observeAndNotify(quad);
+    return quad;
   }
 }
