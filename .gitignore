@@ -2,3 +2,5 @@ node_modules
 dist
 app.log
 coverage
+.vscode
+description.md

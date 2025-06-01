@@ -1,18 +1,9 @@
 {
   "name": "ehu_design_patterns",
   "version": "1.0.0",
-  "description": "Изучи задание и скажи какой паттерн проектирования лучше здесь использовать, фабричный метод или абстрактную фабрику? Проект на тайпскрипт. Точки могут быть как двухмерные(для четырехугольника) так и трехмерные(для куба).",
+  "description": "",
   "main": "index.ts",
-  "directories": {
-    "test": "tests"
-  },
-  "dependencies": {
-    "pino": "^9.6.0",
-    "pino-pretty": "^13.0.0",
-    "ts-jest": "^29.3.2"
-  },
   "devDependencies": {
-    "@types/jest": "^29.5.14",
     "@types/node": "^20.6.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
@@ -20,13 +11,11 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-plugin-import": "^2.31.0",
-    "jest": "^29.7.0",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
   "scripts": {
-    "test": "jest",
     "start": "ts-node src/index.ts"
   },
   "repository": {
