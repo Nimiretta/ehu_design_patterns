@@ -1,5 +1,5 @@
 import type { IOrderVisitor } from '../visitors';
-import type { IOrderComponent } from '.';
+import type { IOrderComponent } from './IOrderComponent';
 
 export class OrderItem implements IOrderComponent {
   constructor(

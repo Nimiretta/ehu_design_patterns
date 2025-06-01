@@ -1,4 +1,4 @@
-import type { IOrderVisitor } from '.';
+import type { IOrderVisitor } from './IOrderVisitor';
 import type { OrderComposite, OrderItem, FullOrder } from '../components';
 
 export class PrintVisitor implements IOrderVisitor {

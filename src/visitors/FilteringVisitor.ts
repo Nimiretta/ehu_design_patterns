@@ -1,5 +1,5 @@
 import type { OrderComposite, OrderItem, FullOrder } from '../components';
-import type { IOrderVisitor } from '.';
+import type { IOrderVisitor } from './IOrderVisitor';
 
 type OrderItemPredicate = (item: OrderItem) => boolean;
 

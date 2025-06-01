@@ -1,5 +1,5 @@
 import { OfflineOrderAdapter } from '../adapters';
-import { CHANNEL, OrderCreator } from '.';
+import { CHANNEL, OrderCreator } from './OrderCreator';
 
 export class OfflineOrderCreator extends OrderCreator {
   channel = CHANNEL.OFFLINE_ORDER;

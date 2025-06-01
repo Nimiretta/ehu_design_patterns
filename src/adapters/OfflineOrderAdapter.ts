@@ -1,5 +1,6 @@
 import type { OfflinePaymentMethod, OfflineItem, OfflineOrder } from '../mocks';
-import type { IOrderAdapter, IOrderData, IOrderDataItem } from '.';
+import type { IOrderAdapter } from './IOrderAdapter';
+import type { IOrderData, IOrderDataItem } from './orders.types';
 import { PAYMENT_METHODS } from '../strategies';
 
 export class OfflineOrderAdapter implements IOrderAdapter {

@@ -1,5 +1,5 @@
 import type { OrderComposite, OrderItem, FullOrder } from '../components';
-import type { IOrderVisitor } from '.';
+import type { IOrderVisitor } from './IOrderVisitor';
 
 export class StatisticsVisitor implements IOrderVisitor {
   private totalPrice = 0;

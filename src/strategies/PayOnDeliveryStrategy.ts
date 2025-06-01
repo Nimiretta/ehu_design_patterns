@@ -1,4 +1,4 @@
-import type { IPaymentStrategy } from '.';
+import type { IPaymentStrategy } from './IPaymentStrategy';
 
 export class PayOnDeliveryStrategy implements IPaymentStrategy {
   pay(amount: number): void {

@@ -1,6 +1,7 @@
 import type { WebPaymentMethod, WebItem, WebOrder } from '../mocks';
 import { PAYMENT_METHODS } from '../strategies';
-import type { IOrderAdapter, IOrderData, IOrderDataItem } from '.';
+import type { IOrderAdapter } from './IOrderAdapter';
+import type { IOrderData, IOrderDataItem } from './orders.types';
 
 export class WebOrderAdapter implements IOrderAdapter {
   normalize(raw: WebOrder): IOrderData {

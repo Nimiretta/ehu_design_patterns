@@ -1,8 +1,8 @@
 import type { CHANNEL } from '../creators';
 import type { IPaymentStrategy } from '../strategies';
 import type { IOrderVisitor } from '../visitors';
-import type { IOrderComponent } from '.';
-import { OrderComposite } from '.';
+import type { IOrderComponent } from './IOrderComponent';
+import { OrderComposite } from './OrderComposite';
 
 export class FullOrder extends OrderComposite {
   public readonly channel: CHANNEL;

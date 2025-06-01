@@ -1,4 +1,4 @@
-import type { IOrderComponent } from '.';
+import type { IOrderComponent } from './IOrderComponent';
 import type { IOrderVisitor } from '../visitors';
 
 export class OrderComposite implements IOrderComponent {
