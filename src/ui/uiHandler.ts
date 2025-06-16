@@ -67,6 +67,7 @@ export function setupUIHandlers({ root, config, previewSubject }: SetupParams) {
       parentSelect.appendChild(opt);
     });
   }
+  (window as any).refreshParentSelect = refreshParentSelect;
   refreshParentSelect();
 
   // Value types

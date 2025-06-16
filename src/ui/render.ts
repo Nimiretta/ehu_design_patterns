@@ -91,6 +91,7 @@ function walk(node: IFieldComponent, ul: HTMLElement, root: IFieldComponent, obs
       }
       renderTree(root, obs);
       obs.notify();
+      if ((window as any).refreshParentSelect) (window as any).refreshParentSelect();
     });
   }
 
@@ -110,6 +111,7 @@ function walk(node: IFieldComponent, ul: HTMLElement, root: IFieldComponent, obs
       }
       renderTree(root, obs);
       obs.notify();
+      if ((window as any).refreshParentSelect) (window as any).refreshParentSelect();
     });
   }
 
