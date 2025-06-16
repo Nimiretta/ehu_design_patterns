@@ -1,11 +1,5 @@
 import { AppConfig } from '../patterns/AppConfigSingleton.js';
-import {
-  prettyPrintXML,
-  hasAttributes,
-  validateXmlName,
-  validateXmlAttributeValue,
-  escapeHtml,
-} from '../utils/index.js';
+import { hasAttributes, validateXmlName, validateXmlAttributeValue, escapeHtml } from '../utils/index.js';
 import { PreviewSubject } from '../patterns/previewObserver/index.js';
 import {
   IFieldComponent,
@@ -13,6 +7,7 @@ import {
   IAttributable,
   IXmlAttribute,
 } from '../patterns/componentsModels/index.js';
+import { JSONBuilder, XMLBuilder } from '../patterns/documentBuilder/index.js';
 
 let treeRoot: HTMLElement | null;
 let preview: HTMLTextAreaElement | null;
@@ -38,34 +33,9 @@ export function updatePreview(root: IFieldComponent): void {
   if (!domReady()) return;
   const fmt = AppConfig.getInstance().exportFormat;
   if (fmt === 'json') {
-    preview!.value = prettyPrint(root.getValue());
+    preview!.value = new JSONBuilder().buildPretty(root);
   } else {
-    preview!.value = prettyPrintXML(root);
-  }
-}
-
-function prettyPrint(val: any, indent = 0): string {
-  const pad = (n: number) => '    '.repeat(n);
-  if (Array.isArray(val)) {
-    if (val.every((el) => typeof el === 'string' || typeof el === 'number' || typeof el === 'boolean' || el === null)) {
-      return '[ ' + val.map((v) => JSON.stringify(v)).join(', ') + ' ]';
-    } else {
-      return (
-        '[\n' + val.map((v) => pad(indent + 1) + prettyPrint(v, indent + 1)).join(',\n') + '\n' + pad(indent) + ']'
-      );
-    }
-  } else if (val && typeof val === 'object') {
-    const keys = Object.keys(val);
-    if (!keys.length) return '{}';
-    return (
-      '{\n' +
-      keys.map((k) => pad(indent + 1) + JSON.stringify(k) + ': ' + prettyPrint(val[k], indent + 1)).join(',\n') +
-      '\n' +
-      pad(indent) +
-      '}'
-    );
-  } else {
-    return JSON.stringify(val);
+    preview!.value = new XMLBuilder().buildPretty(root);
   }
 }
 

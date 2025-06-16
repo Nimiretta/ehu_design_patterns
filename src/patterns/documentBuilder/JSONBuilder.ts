@@ -15,4 +15,8 @@ export class JSONBuilder implements IDocumentBuilder {
   getResult(): string {
     return JSON.stringify(this.obj, null, 2);
   }
+
+  buildPretty(field: IFieldComponent): string {
+    return JSON.stringify(field.getValue(), null, 4);
+  }
 }
