@@ -1,0 +1,132 @@
+.container {
+  max-width: 1400px;
+  margin: 2rem auto;
+}
+
+.three-column-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.form-column {
+  min-width: 350px;
+}
+
+.structure-column {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  padding: 1rem;
+  border-radius: 6px;
+  min-height: 400px;
+}
+
+.preview-column {
+  background: #fafafa;
+  border: 1px solid #dbdbdb;
+  padding: 1rem;
+  border-radius: 6px;
+  position: relative;
+}
+
+.nested-list {
+  margin-left: 1.5rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.error-list {
+  color: #b71c1c;
+  margin: 1rem 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.attr-panel {
+  margin-top: 0.25rem;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  padding: 0.75rem;
+  border-radius: 4px;
+  display: none; /* Hidden by default, shown only for XML */
+  position: static;
+  top: unset;
+  left: unset;
+  right: unset;
+  z-index: unset;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.attr-panel.visible {
+  display: block;
+}
+
+.attr-list {
+  margin: 0.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.attr-list li {
+  margin-bottom: 0.25rem;
+  padding: 0.25rem;
+  background: #fff;
+  border-radius: 3px;
+}
+
+.remove-btn {
+  margin-left: 0.75rem;
+  margin-top: 0.25rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.attr-btn {
+  margin-left: 0.75rem;
+  margin-top: 0.25rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.attr-panel .field.is-grouped {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#preview {
+  position: relative;
+  z-index: 1;
+}
+
+.attr-panel-close {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 1.3em;
+  line-height: 1;
+  padding: 0.1em 0.4em;
+  cursor: pointer;
+  box-shadow: none;
+  margin-left: 0.5em;
+  margin-top: 0.1em;
+  transition: color 0.15s;
+}
+
+.attr-panel-close:hover {
+  color: #b71c1c;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .three-column-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

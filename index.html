@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Data Generator (JSON/XML)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body class="section">
+    <div class="container">
+      <h1 class="title">Test Data Generator (JSON/XML)</h1>
+      <div class="three-column-layout">
+        <!-- Left column: form -->
+        <div id="fields-form" class="form-column">
+          <div class="field">
+            <label class="label">Field name</label>
+            <div class="control">
+              <input id="field-name" class="input" type="text" placeholder="Name" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Value type</label>
+            <div class="control">
+              <div class="select">
+                <select id="value-type">
+                  <option value="string">String</option>
+                  <option value="number">Number</option>
+                  <option value="boolean">Boolean</option>
+                  <option value="null">Null</option>
+                  <option value="object">Object</option>
+                  <option value="array">Array</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Generation mode</label>
+            <div class="control">
+              <div class="select">
+                <select id="gen-mode">
+                  <option value="manual">Manual</option>
+                  <option value="random">Random</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field" id="manual-value-field">
+            <label class="label">Value</label>
+            <div class="control">
+              <input id="manual-value" class="input" type="text" placeholder="Value" />
+            </div>
+          </div>
+          <div class="field" id="boolean-value-field" style="display: none">
+            <label class="label">Value</label>
+            <div class="control">
+              <div class="select">
+                <select id="boolean-value">
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field" id="random-criteria-field" style="display: none">
+            <label class="label">String length</label>
+            <div class="control">
+              <input id="random-length" class="input" type="number" min="1" max="20" value="5" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Parent</label>
+            <div class="control">
+              <div class="select">
+                <select id="parent-select"></select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Export format</label>
+            <div class="control">
+              <div class="select">
+                <select id="format">
+                  <option value="json">JSON</option>
+                  <option value="xml">XML</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="buttons">
+            <button id="add-field" class="button is-info">Add field</button>
+            <button id="export" class="button is-primary">Export</button>
+            <button id="reset" class="button is-warning">Reset</button>
+          </div>
+          <ul id="error-list" class="error-list"></ul>
+        </div>
+
+        <!-- Middle column: structure -->
+        <div id="structure-column" class="structure-column">
+          <strong>Structure:</strong>
+          <ul id="tree-root" class="nested-list"></ul>
+        </div>
+
+        <!-- Right column: preview -->
+        <div id="preview-column" class="preview-column">
+          <div id="attr-panel" class="attr-panel"></div>
+          <strong>Preview:</strong>
+          <textarea id="preview" class="textarea" rows="15" readonly></textarea>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./dist/src/app.js"></script>
+  </body>
+</html>
