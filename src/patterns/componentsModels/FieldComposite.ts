@@ -1,6 +1,7 @@
 import { ICompositeComponent, IFieldComponent, IAttributable, JSONValue, IJSONObject } from './FieldComponent.js';
 import { FieldBase } from './FieldBase.js';
 import { validateXmlName } from '../../utils/validationUtils.js';
+import { ExportFormat } from '../AppConfigSingleton.js';
 
 export class FieldComposite extends FieldBase implements ICompositeComponent, IAttributable {
   public children: IFieldComponent[] = [];
@@ -36,7 +37,7 @@ export class FieldComposite extends FieldBase implements ICompositeComponent, IA
     }
   }
 
-  validate(format: 'json' | 'xml'): string[] {
+  validate(format: ExportFormat): string[] {
     let errors: string[] = [];
     if (!this.name && format === 'xml') errors.push('Tag name cannot be empty');
     if (format === 'xml') {

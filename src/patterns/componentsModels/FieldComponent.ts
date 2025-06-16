@@ -1,3 +1,5 @@
+import { ExportFormat } from '../AppConfigSingleton';
+
 export type JSONValue = string | number | boolean | null | IJSONObject | IJSONArray;
 
 export interface IJSONObject {
@@ -14,7 +16,7 @@ export interface IXmlAttribute {
 export interface IFieldComponent {
   name: string;
   getValue(): JSONValue;
-  validate(format: 'json' | 'xml'): string[];
+  validate(format: ExportFormat): string[];
   type: 'object' | 'array' | 'value';
   isComposite(): boolean;
   parent?: ICompositeComponent | null;

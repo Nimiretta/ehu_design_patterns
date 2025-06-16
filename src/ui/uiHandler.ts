@@ -9,7 +9,7 @@ import {
 import { PreviewSubject } from '../patterns/previewObserver/index.js';
 import { renderTree, adjustAttrVisibility } from './render.js';
 import { ExportFacade } from '../patterns/ExportFacade.js';
-import { AppConfig } from '../patterns/AppConfigSingleton.js';
+import { AppConfig, ExportFormat } from '../patterns/AppConfigSingleton.js';
 import {
   FieldComposite,
   FieldLeaf,
@@ -68,6 +68,30 @@ export function setupUIHandlers({ root, config, previewSubject }: SetupParams) {
     });
   }
   refreshParentSelect();
+
+  // Value types
+  function updateValueTypeOptions() {
+    const allowedTypes = config.getAllowedValueTypes();
+    Array.from(valueTypeSelect.options).forEach((opt) => {
+      if (!allowedTypes.includes(opt.value)) {
+        opt.style.display = 'none';
+        if (valueTypeSelect.value === opt.value) {
+          valueTypeSelect.value = allowedTypes[0];
+        }
+      } else {
+        opt.style.display = '';
+      }
+    });
+  }
+
+  // Format select change handler
+  formatSelect.addEventListener('change', () => {
+    config.exportFormat = formatSelect.value as ExportFormat;
+    updateValueTypeOptions();
+    previewSubject.notify();
+    adjustAttrVisibility();
+  });
+  updateValueTypeOptions();
 
   // Inputs visibility
   function updateValueUI() {
@@ -167,7 +191,7 @@ export function setupUIHandlers({ root, config, previewSubject }: SetupParams) {
   // EXPORT Button
   exportBtn.addEventListener('click', () => {
     errorList.innerHTML = '';
-    config.exportFormat = formatSelect.value as 'json' | 'xml';
+    config.exportFormat = formatSelect.value as ExportFormat;
     const errs = root.validate(config.exportFormat);
     if (errs.length) {
       showErrors(errorList, errs);
@@ -188,30 +212,6 @@ export function setupUIHandlers({ root, config, previewSubject }: SetupParams) {
     clearInputs(fieldNameInput, manualValueInput);
     errorList.innerHTML = '';
   });
-
-  // Value types
-  function updateValueTypeOptions() {
-    const isXml = formatSelect.value === 'xml';
-    Array.from(valueTypeSelect.options).forEach((opt) => {
-      if (isXml && (opt.value === 'null' || opt.value === 'array')) {
-        opt.style.display = 'none';
-        if (valueTypeSelect.value === opt.value) {
-          valueTypeSelect.value = 'string';
-        }
-      } else {
-        opt.style.display = '';
-      }
-    });
-  }
-
-  // Format select change handler
-  formatSelect.addEventListener('change', () => {
-    config.exportFormat = formatSelect.value as 'json' | 'xml';
-    updateValueTypeOptions();
-    previewSubject.notify();
-    adjustAttrVisibility();
-  });
-  updateValueTypeOptions();
 }
 
 // -------- Helpers for setupUIHandlers ----------

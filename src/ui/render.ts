@@ -40,10 +40,10 @@ export function updatePreview(root: IFieldComponent): void {
 }
 
 export function adjustAttrVisibility(): void {
-  const isXml = AppConfig.getInstance().exportFormat === 'xml';
-  document.querySelectorAll<HTMLButtonElement>('.attr-btn').forEach((b) => (b.style.display = isXml ? '' : 'none'));
+  const showAttrs = AppConfig.getInstance().isAttributesEnabled();
+  document.querySelectorAll<HTMLButtonElement>('.attr-btn').forEach((b) => (b.style.display = showAttrs ? '' : 'none'));
 
-  if (!isXml && attrBox) {
+  if (!showAttrs && attrBox) {
     attrBox.classList.remove('visible');
     attrBox.innerHTML = '';
   }
@@ -126,7 +126,7 @@ function walk(node: IFieldComponent, ul: HTMLElement, root: IFieldComponent, obs
 
 function attrPanel(node: IFieldComponent, obs: PreviewSubject, root: IFieldComponent): void {
   if (!attrBox) return;
-  if (AppConfig.getInstance().exportFormat !== 'xml') return;
+  if (!AppConfig.getInstance().isAttributesEnabled()) return;
   if (!hasAttributes(node)) return;
   const attrNode = node as unknown as IAttributable;
 

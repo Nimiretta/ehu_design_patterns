@@ -1,4 +1,5 @@
 import { validateXmlName, validateXmlAttributeValue } from '../../utils/validationUtils.js';
+import { ExportFormat } from '../AppConfigSingleton.js';
 import { IFieldComponent, IAttributable, IXmlAttribute, JSONValue, ICompositeComponent } from './FieldComponent.js';
 
 export abstract class FieldBase implements IFieldComponent, IAttributable {
@@ -7,7 +8,7 @@ export abstract class FieldBase implements IFieldComponent, IAttributable {
   abstract name: string;
   abstract type: 'object' | 'array' | 'value';
   abstract getValue(): JSONValue;
-  abstract validate(format: 'json' | 'xml'): string[];
+  abstract validate(format: ExportFormat): string[];
   abstract isComposite(): boolean;
 
   addAttribute(attr: IXmlAttribute) {
