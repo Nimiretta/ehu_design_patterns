@@ -4,4 +4,5 @@ export interface IDocumentBuilder {
   reset(): void;
   addField(field: IFieldComponent): void;
   getResult(): string;
+  buildPretty(field: IFieldComponent): string;
 }

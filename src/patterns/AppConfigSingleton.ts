@@ -4,7 +4,6 @@ export class AppConfig {
   private static instance: AppConfig;
   public exportFormat: ExportFormat = 'json';
 
-  // Форматные правила
   public readonly formats = {
     json: {
       valueTypes: ['string', 'number', 'boolean', 'null', 'object', 'array'],
